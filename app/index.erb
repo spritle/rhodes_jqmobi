@@ -1,0 +1,243 @@
+  <div id ="header">
+    <h1 id="pageTitle">TestjqMobi</h1>
+  </div>
+
+  <div id="content">
+  
+      <div title='Documentation' id="main" class="panel" selected="true"  data-footer='footerui'>
+        <ul>
+            <li><a href="#jqmui">jqUi</a></li>
+            <li><a href='#jqUiSwipe'>Swipe Plugin</a></li>
+            <li> <a href="/app/Product/new">New Product</a>
+            <li> <a href="/app/Product/test_ui">Login</a>
+            <li> <a href="/app/Product/popup_sample">Pop up sample</a>
+        </ul>
+      </div>
+      
+        <div title="jqUI" id="jqmui" class="panel" data-footer='footerui'>
+               <ul>
+                   <li><a href="#uigoback">.goBack()</a></li>
+                   <li><a href="#uiclearhistory">.clearHistory()</a></li>
+                   <li><a href="#uiaddcontentdiv">.addContentDiv ()</a></li>
+                   <li><a href="#uiupdateanchors">.updateAnchors() </a></li>
+                   <li><a href="#uisettitle">.setTitle(text) </a></li>
+                   <li><a href="#uisetbackbutton">.setBackButtonText() </a></li>
+                   <li><a href="#uishowmask">.showMask() </a></li>
+                   <li><a href="#uihidemask">.hideMask() </a></li>
+                   <li><a href="#uiloadcontent">.loadContent(); </a></li>
+                   <li><a href="#uilaunch">.launch(); </a></li>
+                   <li><a href="#uiready">.ready(); </a></li>
+                   <li><a href="#uibadge">.updateBadge(); </a></li>
+                   <li><a href="#uiremovebadge">.removeBadge(); </a></li>
+                   <li><a href="#uitoggleheader">.toggleHeaderMenu(); </a></li>
+                   <li><a href="#uitoggleside">.toggleSideMenu(); </a></li>
+                   <li><a href="#uitogglenav">.toggleNavMenu(); </a></li>
+                       <li><a href="#uiactionsheet">.actionsheet() </a></li>
+                       
+                   <li><a href="#uiscrolltotop">.scrollToTop() </a></li>
+               
+                 </ul>
+             </div>
+             
+               <div id="uibadge" title="updateBadge" class="panel" data-footer='footerui'>
+                 Updates a badge with the given value or creates one.<br>
+                 Position can be
+                 <pre>
+                 bl - bottom left
+                 tl - top left
+                 br - bottom right
+                 tr - top right (default)
+                 </pre>
+                 <ul>
+                 <li id='libadge'><a href="javascript:;">Badge</a></li>
+                 </ul>
+                 <pre>
+                 $.ui.updateBadge("#libadge","Badge Created","bl");
+                 </pre>
+                 
+                 <a href="javascript:;" onclick="$.ui.updateBadge('#libadge','Badge Created','tl');" class="button">Create Badge</a>
+                 <br>
+                 </div>
+                 
+                   <div id="uigoback" title="Go Back" class="panel" data-footer='footerui'>
+                     You can use this command to go back in history.
+                     <pre>
+                     $.ui.goBack()
+                     </pre>
+                     <a href="javascript:;" onclick="$.ui.goBack()" class="button">Go Back</a>
+                   </div>
+                 <div id="uiclearhistory" title="Clear History" class="panel" data-footer='footerui' >
+                   You can use this command to clear the history stack manually
+                   <pre>
+                   $.ui.clearHistory()
+                   </pre>
+                   <a href="javascript:;" onclick="$.ui.clearHistory()" class="button">Clear History Stack</a>
+                 
+                 </div>
+           
+               <div id="uiaddcontentdiv" title="Add Content Div" class="panel" data-footer='footerui'>
+                 You can use this command to add a new div programatically.  This will setup scrolling, etc.
+                 <pre>
+                 $.ui.addContentDiv(id, content,title
+                 , pullToRefresh, refreshFunc)
+                 </pre>
+                 <script>
+                 function addDiv(){
+                 $.ui.addContentDiv("myAddedDiv","I was added dynamically","Added Div");
+                 $("#addContent").show();
+                 $("#addContentButton").hide();
+                 }
+                 </script>
+                 <span id="addContent" style='display:none'>
+                 <a href="#myAddedDiv" class="button">View new div</a>
+                 <br/>
+                 </span>
+                 <a id='addContentButton' href="javascript:;" onclick="addDiv();" class="button">Add Content Div</a>
+              </div>
+             <div id="uiupdateanchors" title="Update Anchors" class="panel" data-footer='footerui'>
+               This will loop through content and parse any anchors to automagically wire them.<br>
+               <pre>
+               $.ui.updateAnchors(div,resetHistory)
+               </pre>
+             </div>
+               <div id="uisettitle" title="Set Title" class="panel" data-footer='footerui'>
+                 This will set the page title of the current page programatically.  It will not be retained.
+                 <pre>
+                 $.ui.setTitle('Title Change');
+                 </pre>
+               
+                 <a href='javascript:;' onclick="$.ui.setTitle('Title Change');" class="button">Change Title</a>
+               
+                 </div>
+                 <div id="uisetbackbutton" title="Change Back Button Text" class="panel" data-footer='footerui'>
+                 This will set the back button text.  You can also override this at the start, which we have done.
+                 <pre>
+                 $.ui.setBackButtonText('GO BACK');
+               
+                 $.ui.backButtonText="Back" //override
+                 </pre>
+                 </div>
+                 <div id="uishowmask" title="Show Mask" class="panel" data-footer='footerui'>
+                 This will show the loading mask.  You can trigger this manually for long operations.
+                 <pre>
+                 $.ui.showMask();
+                 </pre>
+               
+                 <script>
+                 function showMask(text){
+               
+                 $.ui.showMask(text);
+                 window.setTimeout(function(){$.ui.hideMask();},2000);
+                 }
+                 </script>
+                 <a href="javascript:;" onclick="showMask('Mask will hide in 2 seconds')" class="button">Show Mask</a>
+                 </div>
+                 <div id="uihidemask" title="Hide Mask" class="panel" data-footer='footerui'>
+                 This will hide the loading mask.  You can trigger this manually for long operations.
+                 <pre>
+                 $.ui.hideMask();
+                 </pre>
+               
+                 <a href="javascript:;" onclick="$.ui.showMask()" class="button">Show Mask</a> | <a href="javascript:;" onclick="$.ui.hideMask()" class="button">Hide Mask</a>
+               
+                 </div>
+                 <div id="uiloadcontent" title="Load Div" class="panel" data-footer='footerui'>
+                 This allows you to programatically trigger a page transition/navigation event.
+                 <pre>
+                 $.ui.loadContent()
+                 </pre>
+               
+                 <a href="javascript:;" onclick="$.ui.loadContent('main',false,false,'flip')" class="button">Load $.ui API page with a flip</a>
+               
+                 </div>
+                 
+                   <div id="uitoggleheader" title="Toggle Header" class="panel" data-footer="footerui">
+                       This allows you to hide/show the header bar if you have one.  When you do this, the content area will expand up for you.
+                       <pre>
+                       $.ui.toggleHeaderMenu();
+                       </pre>
+                       <a href="javascript:;" onclick="$.ui.toggleHeaderMenu()" class="button">Toggle Header Menu</a>
+                     </div>
+                     
+                     <div id="uitogglenav" title="Toggle Footer Nav" class="panel" data-footer="footerui">
+                       This lets you toggle the footer navigation menu if you have one.   when you do this, the content area will expand down for you.
+                       <br>
+                       You can also do this by setting data-footer="none" on the panel
+                       <pre>
+                       $.ui.toggleNavMenu();
+                       </pre>
+                       <a href="javascript:;" onclick="$.ui.toggleNavMenu()" class="button">Toggle Nav Menu</a>
+                     </div>
+                     
+                     <div id="uitoggleside" title="Toggle Side Nav" class="panel" data-footer="footerui">
+                       This lets you toggle the side navigation menu if you have one.   On a tablet, this will be persistent by default.
+                       <pre>
+                       $.ui.toggleSideNav();
+                       </pre>
+                       <a href="javascript:;" onclick="$.ui.toggleSideMenu();" class="button">Toggle Side Menu</a>
+                     </div>
+                       
+                       <div id="uiactionsheet" title="Actionsheet" class="panel" data-footer='footerui'>
+                      This is a shortcut to the actionsheet plugin.  This will wire it correctly to jQUi div
+                     <pre>
+                     $.ui.actionsheet()
+                     </pre>
+                     <br><br>
+                     
+                     <a href="javascript:;" onclick="$.ui.actionsheet('<a href=\'#\' class=\'button\'>Test</a>')" class="button">Show a custom sheet</a>
+                     <br/><br/>
+                     </div>
+                     
+                     <div id="uiscrolltotop" title="Scroll to Top" class="panel" data-footer='footerui'>
+                     This allows you to scroll to the top of a page.  Scroll to the bottom for the link.
+                     <pre>
+                     $.ui.scrollToTop(div_id)
+                     </pre>
+                     <br><br>
+                     Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>Keep scrolling down.<br><br><br><br>
+                   
+                     <a href="javascript:;" onclick="$.ui.scrollToTop('uiscrolltotop')" class="button">Scroll to Top</a>
+                     <br/><br/>
+                     </div>    
+                     
+            </div>
+        <div title="Swipe" class="panel" id="jqUiSwipe" scrolling="no">
+            <style>
+              .result {position:absolute;left:100px;}
+            </style>
+            <script>
+              /* This function runs once the page is loaded, but appMobi is not yet active */
+              var init_swipe = function () {
+              $("#swiper").swipeListener({
+                  vthreshold: 30,
+                  hthreshold: 50,
+                  callBack: function (dir) {
+                    debugMsg(dir)
+                  }
+                });
+              };
+              window.addEventListener("load", init_swipe, false);
+        
+              function debugMsg(direction) {
+                document.getElementById("debug").innerHTML =
+                "Up: <span class='result'>" + direction.up + "</span><br />" +
+                "Down: <span class='result'>" + direction.down + "</span><br />" +
+                "Left: <span class='result'>" + direction.left + "</span><br />" +
+                "Right: <span class='result'>" + direction.right + "</span><br />";
+              }
+            </script>
+            Swipe Below
+            <div id="swiper"
+              style="height: 200px; width: 95%; background:#ccc"></div>
+            <div id="debug"></div>
+          </div>          
+           
+ 
+   
+  <footer id='footerui'>
+      <div class="horzRule"></div>
+         <a href="#main" id='navbar_home' class='navbar_home' >Home <span class='jq-badge lr'>6</span></a>
+         <a href="#jqmui" id='navbar_ui'  class="navbar_ui" >ui</a>
+         <a href="#jqUiSwipe" id='navbar_plugins'  class="navbar_plugins" >swipe</a>
+  </footer>
+   

@@ -1,0 +1,39 @@
+   
+   <script>
+           function showPopup1(){
+               $("#jQUi").popup("I'm replacing an alert box");
+           }
+           function showPopup2(){
+               $("#jQUi").popup({ title:"Alert! Alert!",
+     message:"This is a test of the emergency alert system!! Don't PANIC!",
+     cancelText:"Cancel me", 
+     cancelCallback: function(){console.log("cancelled");},
+     doneText:"I'm done!",
+     doneCallback: function(){console.log("Done for!");},
+     cancelOnly:false}
+               );
+           }
+               function showPopup3(){
+               $("#jQUi").popup({ title:"Login",
+     message:"Username: <input type='text' id='username' class='jq-ui-forms'><br>Password: <input type='text' id='password' class='jq-ui-forms' style='webkit-text-security:disc'>",
+     cancelText:"Cancel", 
+     cancelCallback: function(){},
+     doneText:"Login",
+     doneCallback: function(){
+       $("#addContent").show();     
+       var n = $('#username').val();
+       var p = $('#username').val();
+       $('#addContent').append("<b>Your input Name:"+ name + "</b>");  
+          
+     },
+     cancelOnly:false
+               }
+               );
+           }
+   </script>
+   This creates a popup dialog to interact with users.  You can pass in an HTML string, which acts (and replaces) an alert dialog.  You can also pass in an object to get more interaction.<br><br>
+   <a class="button" href="javascript:;" onClick="showPopup1()">Alert style diaglog</a><br>
+   <a class="button" href="javascript:;" onClick="showPopup2()">Detailed ineraction</a><br>
+   <a class="button" href="javascript:;" onClick="showPopup3()">HTML markup</a><br>
+       
+   <span id="addContent">sDSD</span>

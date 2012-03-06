@@ -1,0 +1,19 @@
+
+
+    <ul>
+      <% @products.each do |product| %>
+      
+          <li>
+            <a href="<%= url_for :action => :show, :id => product.object %>">
+              <%= product.name %>
+            </a>
+          </li>
+      
+      <% end %>
+    </ul>
+     
+    <script>
+      $.ui.setTitle('Product Index');
+    </script>  
+
+

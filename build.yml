@@ -1,0 +1,25 @@
+#sdk: "C:/RhoStudio/ruby/lib/ruby/gems/1.8/gems/rhodes-3.3.1"
+sdkversion: 3.3.0
+name: TestjqMobi
+version: 1.0
+vendor: rhomobile
+build: debug
+bbver: 4.6
+applog: rholog.txt
+iphone:
+  configuration: Release
+  sdk: iphonesimulator5.0
+  provisionprofile: 
+  codesignidentity: 
+  entitlements: 
+  BundleIdentifier: com.rhomobile.testjqmobi
+  BundleURLScheme: testjqmobi
+wp:
+  productid: f445a1d0-48e8-012f-6a14-17f16cce6a42
+symbian:
+  uid: 0xea9c866d
+android:
+  version: 2.1
+extensions:
+  - json
+  - another-extension

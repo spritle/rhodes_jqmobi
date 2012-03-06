@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>TestjqMobi</title>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <% is_bb6 = System::get_property('platform') == 'Blackberry' && (System::get_property('os_version').split('.')[0].to_i >= 6) %>
+
+    <% if is_bb6 %>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <% else %>
+        
+    <% end %>
+
+    <% if System::get_property('platform') == 'WP7' %>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <% end %>
+
+    <% if System::get_property('platform') == 'APPLE' || System::get_property('platform') == 'ANDROID' || is_bb6 || System::get_property('webview_framework') =~ /^WEBKIT/ %>
+        
+        <link rel="stylesheet" type="text/css" href="/public/jQMobi/kitchensink/jq.ui.css" title="default"/>
+        <link rel="stylesheet" type="text/css" href="/public/jQMobi/kitchensink/icons.css" />
+        
+        
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/jq.mobi.js"></script>
+        <script>
+        function loadedPanel(what){
+            //We are going to set the badge as the number of li elements inside the target
+         // $.ui.updateBadge("#jqmlink",$("#jq").find("li").length);
+          }
+          function unloadedPanel(what){
+          console.log("unloaded "+what.id);
+          }
+        if(!((window.DocumentTouch&&document instanceof DocumentTouch)||'ontouchstart' in window)){
+        var script=document.createElement("script");
+        script.src="touch.js";
+        var tag=$("head").append(script);
+        $.os.android=true; 
+        $.os.desktop=true;
+        }
+        var oldElem="default";
+        function setActiveStyleSheet(title) {
+           var a = document.getElementsByTagName("link");
+           var currElem;
+           
+           if(title==oldElem.getAttribute("title")||oldElem=="default")
+              return;
+           for(i=0; i<a.length; i++) {
+           
+               if(a[i].getAttribute("title")==title){
+                 currElem=a[i];
+               }
+               else if(!a[i].getAttribute("disabled")&&a[i].getAttribute("title"))
+                  oldElem=a[i];
+           }
+           
+           currElem.removeAttribute("disabled");
+           jq.ui.showMask();
+           window.setTimeout(function(){
+              jq.ui.hideMask();
+              oldElem.setAttribute("disabled","true");
+           },500);
+        }
+        $(document).ready(function(){
+        oldElem=document.getElementsByTagName("link")[0];
+        });
+        </script>
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.swipe.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.template.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.carousel.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.css3animate.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.drawer.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.passwordBox.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.scroller.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.shake.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.selectBox.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.alphatable.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.actionsheet.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/plugins/jq.popup.js"></script> 
+        
+        <script type="text/javascript" charset="utf-8" src="/public/jQMobi/ui/jq.ui.js"></script> 
+        
+<script type="text/javascript">
+    /* This function runs once the page is loaded, but appMobi is not yet active */
+  var webRoot="./kitchensink/";
+  $.ui.autoLaunch=false;
+    var init = function(){
+     $.ui.backButtonText="Back";  
+     window.setTimeout(function(){$.ui.launch();},1500);
+       //$.ui.removeFooterMenu(); This would remove the bottom nav menu
+    };
+    document.addEventListener("DOMContentLoaded",init,false);  
+    
+    
+var preventDefaultScroll = function(event) {
+       event.preventDefault();
+       window.scroll(0,0);
+       return false;
+   };
+
+ document.addEventListener('touchmove', preventDefaultScroll, false);
+
+ function showHide(obj,objToHide){
+   var el=$("#"+objToHide)[0];
+
+   if(obj.className=="expanded"){
+     obj.className="collapsed";
+   }
+   else{
+     obj.className="expanded";
+   }
+   $(el).toggle();
+
+ }
+
+    </script>
+
+    <% end %>
+
+    <% if System::get_property('platform') == 'APPLE' %>
+        <link href="/public/css/iphone.css" type="text/css" rel="stylesheet"/>
+    <% elsif System::get_property('platform') == 'ANDROID' %>
+        <link href="/public/css/android.css" type="text/css" rel="stylesheet"/>
+    <% elsif is_bb6 %>
+        <link href="/public/css/android.css" type="text/css" rel="stylesheet"/>
+    <% elsif System::get_property('platform') == 'Blackberry' %>
+        <link href="/public/css/blackberry.css" type="text/css" rel="stylesheet"/>
+    <% elsif System::get_property('platform') == 'WP7' %>
+	    <link href="/public/css/windows_mobile.css" type="text/css" rel="stylesheet"/>
+		<script src="/public/js/wp7.js" type="text/javascript"></script>
+    <% elsif System::get_property('webview_framework') =~ /^WEBKIT/ %>
+        <link href="/public/css/android.css" type="text/css" rel="stylesheet"/>
+    <% elsif System::get_property('platform') == 'WINDOWS' %>
+	    <link href="/public/css/windows_mobile.css" type="text/css" rel="stylesheet"/>
+    <% end %>
+</head>
+
+<body
+<% if is_bb6 %>
+	data-do-fix-forms="true"
+<% elsif System::get_property('platform') == 'WP7' %>
+	onload="wp7_change_forms_action_to_get()"
+<% end %>
+	>
+<div id="jQUi">
+
+    <%= @content %>
+ </div>   
+</body>
+
+</html>

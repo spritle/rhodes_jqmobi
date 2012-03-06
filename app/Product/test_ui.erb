@@ -1,0 +1,46 @@
+<form id="form">
+
+      <fieldset>
+        <legend></legend>
+        
+        <label for="name">Full Name</label><br/>
+        <input type="text" id="name" class='jq-ui-forms' value='John Smith'/><br/>
+    
+        <label for="email">E-mail</label><br/>
+        <input type="text" id="email" class='jq-ui-forms' value='test@mail.com' /><br/>
+    
+        <label for="password">Password</label><br/>
+        <span><input type="password" id="password" class='jq-ui-forms' /></span><br/> <!-- span is needed for android password fix -->
+    
+          <label for="country">Country</label><br/>
+          <span><!-- span is needed for android select box fix -->
+        <select id="country" class='jq-ui-forms'>
+          <option value='1'>USA 1</option>
+          <option value='2'>USA 2</option>
+          <option value='3'>USA 3</option>
+          <option value='4'>USA 4</option>
+          <option value='5'>USA 5</option>
+          <option value='6'>USA 6</option>
+          <option value='7'>USA 7</option>
+          <option value='8'>USA 8</option>
+          <option value='9'>USA 9</option>
+          <option value='10'>USA 10</option>
+          </select>
+        </span> <br/>
+
+    
+  <br/>
+        <label for="web">Comments</label>
+        <textarea name="web" class='jq-ui-forms'></textarea><br/>
+        
+      </fieldset>
+          <input type="button" onclick="serializeForm()" value="Serialize">
+</form>
+
+              <br><br><br>
+<script>
+    function serializeForm(){
+       alert($("#form").serialize());
+    }
+</script>      
+        
