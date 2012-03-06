@@ -61,4 +61,8 @@ class ProductController < Rho::RhoController
     @product.destroy if @product
     redirect :action => :index  
   end
+  
+  def transition
+  
+  end
 end
